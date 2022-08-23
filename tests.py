@@ -5,11 +5,15 @@
 from playsound import playsound
 playsound('soniditos/StarWars3.wav')
 
-#%%
-from pydub import AudioSegment
-from pydub.playback import play
+#%%  sounddevice for np arrays containing audio signals
 
-song = AudioSegment.from_wav("sound.wav")
-play(song)
+import sounddevice as sd
+import soundfile as sf
+
+data, fs = sf.read('soniditos/StarWars3.wav')
+sd.play(data, fs)
+sd.wait()
+
+# definitely better library
 
 #%%
